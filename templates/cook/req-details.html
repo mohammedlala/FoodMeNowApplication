@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4"></div>
+<div class="contact-form py-5" id="contact">
+  
+  <div class="contacts12-main mb-5">
+    <div class="container ml-3">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4 class="mb-2">Client Requirements</h4>
+          <table class="table table-light">
+            <tbody>
+              {% for req in requirement %}
+              <tr>
+                <th class='p-3' width='35%'>Title:</th>
+                <td class='p-3'>{{ req.title }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Description:</th>
+                <td class='p-3'>{{ req.description }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Preferred Gender:</th>
+                <td class='p-3'>{{ req.gender }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>City:</th>
+                <td class='p-3'>{{ req.city }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Area:</th>
+                <td class='p-3'>{{ req.area }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Preferred Time:</th>
+                <td class='p-3'>{{ req.times }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Preferred Age:</th>
+                <td class='p-3'>{{ req.age }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Food Type</th>
+                <td class='p-3'>{{ req.food }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Food Category</th>
+                <td class='p-3'>{{ req.food_category }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-6">
+          <h4 class="mb-2">Client Information</h4>
+          <table class="table table-light">
+            <tbody>
+              {% for user in user1 %}
+              <tr>
+                <th class='p-3' width='35%'>Name:</th>
+                <td class='p-3'>{{ user.username }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Email:</th>
+                <td class='p-3'>{{ user.email }}</td>
+              </tr>
+              {% endfor %}
+              {% for user in user %}
+              <tr>
+                <th class='p-3'>Gender:</th>
+                <td class='p-3'>{{ user.gender }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Contact No.:</th>
+                <td class='p-3'>{{ user.mobile }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>Address:</th>
+                <td class='p-3'>{{ user.address }}</td>
+              </tr>
+              <tr>
+                <th class='p-3'>City:</th>
+                <td class='p-3'>{{ user.city }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  table{
+    border-radius: 7px;
+    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
+  }
+</style>
+{% endblock content %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4"></div>
+<div class="contact-form py-5" id="contact">
+  <div class="container py-lg-5 py-md-4">
+
+    <h3 class="hny-title mb-lg-5 mb-4">Cook Registation</h3>
+    <div class="contacts12-main mb-5">
+      <form method='post' action='cook-register'>
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name='firstname' id="firstname"
+              placeholder="Your First Name" required />
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name='lastname' id="lastname"
+              placeholder="Your Last Name" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="email" class="form-control" name='email' id="email"
+              placeholder="Your Email" required />
+          </div>
+          <div class="form-group col-md-6">
+            <input type="password" class="form-control" name='password' id="password"
+              placeholder="Enter Password" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name='city' id="city" placeholder="Your City" required />
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name='area' id="area" placeholder="Enter Area" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="number" class="form-control" name='mobile' id="mobile"
+              placeholder="Mobile Number" required />
+          </div>
+          <div class="form-group col-md-6">
+            <select id="gender" name='gender' class="form-control" required>
+              <option selected disabled>--Select Gender--</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="address" name='address'
+            placeholder="Enter Your Address" required />
+        </div>
+
+        <div class="text-center">
+          <button class="btn btn-style btn-primary btn-contact">Submit Now</button>
+        </div>
+      </form>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show col-md-8" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+  </div>
+</div>
+{% endblock content %}

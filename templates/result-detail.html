@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4"></div>
+<div class="contact-form py-5" id="contact">
+  <h4 class="mb-4 m-3">Details are as Follow:</h4>
+  <div class="contacts12-main mb-5">
+    <table class="table table-light w-50 m-3">
+      <tbody>
+        {% for cook in cook %}
+        <tr>
+          <th class='p-3' width='25%'>First Name:</th>
+          <td class='p-3'>{{ cook.firstname }}</td>
+        </tr>
+        <tr>
+          <th class='p-3'>Last Name:</th>
+          <td class='p-3'>{{ cook.lastname }}</td>
+        </tr>
+        <tr>
+          <th class='p-3'>Email:</th>
+          <td class='p-3'>{{ cook.email }}</td>
+        </tr>
+        <tr>
+          <th class='p-3'>City:</th>
+          <td class='p-3'>{{ cook.city }}</td>
+        </tr>
+        <tr>
+          <th class='p-3'>Area:</th>
+          <td class='p-3'>{{ cook.area }}</td>
+        </tr>
+        <tr>
+          <th class='p-3'>Contact No.:</th>
+          <td class='p-3'>{{ cook.mobile }}</td>
+        </tr>
+        <tr>
+          <th class='p-3'>Gender:</th>
+          <td class='p-3'>{{ cook.gender }}</td>
+        </tr>
+        <tr>
+          <th class='p-3'>Address:</th>
+          <td class='p-3'>{{ cook.address }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<style>
+  table {
+    border-radius: 7px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+  }
+</style>
+{% endblock content %}
+  

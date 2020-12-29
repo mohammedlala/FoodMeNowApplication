@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4"></div>
+    <div class="contact-form py-5" id="contact">
+      <div class="container py-lg-5 py-md-4">
+        <a href="{% url 'req-create' %}">
+          <button type="button" class="btn btn-style btn-primary btn-contact">Post Your Requirements</button>
+        </a>
+        <h4 class="hny-title mb-lg-5 mb-4 mt-3">Search Cook</h4>
+        <div class="contacts12-main mb-5">
+          
+          <form method='post' action='search-cook'>
+            {% csrf_token %}
+        
+            <div class="form-group col-md-6">
+              <select id="city" name='city' class="form-control">
+                <option selected disabled>--Choose City--</option>
+                <option>indore</option>
+                <option>mumbai</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <select id="area" name='area' class="form-control">
+                <option selected disabled>--Choose Area--</option>
+                <option>geeta bhawan</option>
+                <option>bhawarkuan</option>   
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <select id="gender" name='gender' class="form-control">
+                <option selected disabled>--Preferred Gender--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="text-left">
+              <button class="btn btn-style btn-primary btn-contact">Search</button>
+            </div>
+          </form>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show col-md-8" role="alert">
+          <strong>{{message}}</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#city").change(function () {
+          var nm = document.getElementById('city').value;
+          $.get("area-load", {
+            name: nm
+          },
+            function (data) {
+              $("#area").html(data);
+            });
+        });
+      });
+    </script>
+    
+    
+{% endblock content %}

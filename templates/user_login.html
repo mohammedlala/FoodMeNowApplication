@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4"></div>
+<div class="contact-form py-5" id="contact">
+  <div class="container py-lg-5 py-md-4">
+
+    <h3 class="hny-title mb-lg-5 mb-4">User Login</h3>
+    {% if user.is_authenticated %}
+      <script>window.location = "{% url 'user-home' %}";</script>
+    {% endif %}
+    
+    <div class="contacts12-main mb-5">
+      <form method='post'>
+        {% csrf_token %}
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            {{ form|crispy }}
+          </div>
+        </div>
+        
+        <div class="text-left">
+          <button type='submit' class="btn btn-style btn-primary btn-contact">Login</button>
+        </div>
+      </form>
+      <a href="{% url 'user-register' %}">
+        <button type="button" class="btn btn-style btn-primary btn-contact mt-2">Register</button>
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}
+  

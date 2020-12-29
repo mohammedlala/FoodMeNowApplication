@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+<style>
+  table{
+    width: 100px;
+  }
+</style>
+{% block content %}
+<div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4"></div>
+<div class="contact-form py-5" id="contact">
+  <h4 class="mb-4 m-3">Cook Found!!</h4>
+  <div class="contacts12-main mb-5">
+  <table class="table table-hover w-75 m-3">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">S.no.</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">City</th>
+        <th scope="col">Area</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cook in cook %}
+        <tr>
+          <th class='p-3'>{{forloop.counter}}</th>
+          <td class='p-3'>{{ cook.firstname }}</td>
+          <td class='p-3'>{{ cook.lastname }}</td>
+          <td class='p-3'>{{ cook.city }}</td>
+          <td class='p-3'>{{ cook.area }}</td>
+          <td scope="row">
+            <a href="{% url 'result-detail' cook.email %}">
+              <button type="button" class="btn btn-primary btn-sm">View Details</button>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+<style>
+  table {
+    border-radius: 7px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+  }
+</style>
+{% endblock content %}
+  

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4"></div>
+<div class="contact-form py-5" id="contact">
+  <h4 class="mb-4 m-3">Requirements Found!!</h4>
+  <div class="contacts12-main mb-5">
+    <table class="table table-hover w-75 m-3">
+      <thead class="thead-light">
+        <tr align="center">
+          <th scope="col">S.no.</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Preferred Gender</th>
+          <th scope="col">City</th>
+          <th scope="col">Area</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for req in req %}
+        <tr align="center">
+          <th class='p-3'>{{forloop.counter}}</th>
+          <td class='p-3'>{{ req.title }}</td>
+          <td class='p-3'>{{ req.description }}</td>
+          <td class='p-3'>{{ req.gender }}</td>
+          <td class='p-3'>{{ req.city }}</td>
+          <td class='p-3'>{{ req.area }}</td>
+          <td scope="row">
+            <a href="{% url 'req-details' req.id %}">
+              <button type="button" class="btn btn-primary btn-sm">View Details</button>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+        
+  </div>
+</div>
+{% endblock content %}
